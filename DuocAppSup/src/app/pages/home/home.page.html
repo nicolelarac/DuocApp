@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="admin"> ADMIN </ion-title>
+    <ion-button color="danger" class="cerrar" slot="end" routerLink="/login">CERRAR SESION</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="fondo">
+  <ion-card>
+  <form class="lista" [formGroup]="alumno" (ngSubmit)="registrar()">
+    <ion-item>
+      <ion-label position="stacked">Rut</ion-label>
+      <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Nombre completo</ion-label>
+      <ion-input type="text" placeholder="Ingrese nombre" formControlName="nom_completo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Fecha nacimiento</ion-label>
+      <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Semestre</ion-label>
+      <ion-input type="number" placeholder="Ingrese semestre" formControlName="semestre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Correo duoc</ion-label>
+      <ion-input type="text" placeholder="Ingrese correo duoc" formControlName="correoduoc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" placeholder="Ingrese contraseña" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Repita Contraseña</ion-label>
+      <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password"
+        [ngModelOptions]="{standalone: 'true'}"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!alumno.valid">REGISTRAR</ion-button>
+    <ion-button color="success" (click)="modificar()">MODIFICAR</ion-button>
+    <ion-button color="warning"(click)="limpiar()">LIMPIAR</ion-button>
+  </form>
+  </ion-card>
+
+  <h1>LISTA DE USUARIOS</h1>
+  <ion-card class="lissta">
+    <ion-list *ngFor="let usuario of usuarios">
+      <p class="usuarioss">RUT: {{usuario.rut}} - NOMBRE: {{usuario.nom_completo}} - FECHA NAC: {{usuario.fecha_nac}} - SEMESTRE: {{usuario.semestre}} - CORREO: {{usuario.correoduoc}}</p>
+      <ion-button color="warning" color="secondary" (click)="buscar(usuario.rut)">Buscar</ion-button>
+      <ion-button color="danger" (click)="eliminar(usuario.rut)">Eliminar</ion-button>
+    </ion-list>
+  </ion-card>
+  </div>
+       
+</ion-content>

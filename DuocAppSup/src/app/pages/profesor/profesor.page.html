@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="fondo">
+  <ion-card>
+    <img src="../../../assets/img/duoc.png" alt="ta mala" class="imagen_login" />
+    <ion-card-header>
+      <ion-card-title>Momento Duoc</ion-card-title>
+    </ion-card-header>
+    <img class="estu" src="../../../assets/icon/profe.png">
+    <h1 class="bien">Bienvenido, Profesor</h1>
+    <ion-card-content>
+      <ion-card-subtitle class="asis">ASISTENCIA</ion-card-subtitle>
+      <!--aca empieza el modal-->
+      <ion-button expand="block" color="success" (click)="setOpen(true)"><ion-icon name="qr-code-outline"></ion-icon>Generar QR</ion-button>
+      <ion-modal [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>QR Generado</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <img src="../../../assets/img/qr" class="kuerre">
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-button class= "out" color="danger" href='/login'><ion-icon name="log-out"></ion-icon> Salir</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  </div>
+</ion-content>
